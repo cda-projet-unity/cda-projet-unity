@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Cherry
+  - Spikes
+  - Traps
   layers:
   - Default
   - TransparentFX
@@ -11,7 +14,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Ground
   - 
   - 
   - 
@@ -44,9 +47,18 @@ TagManager:
   - name: background
     uniqueID: 2080533469
     locked: 0
+  - name: Background2
+    uniqueID: 2617455717
+    locked: 0
+  - name: bg3
+    uniqueID: 954773057
+    locked: 0
+  - name: bg4
+    uniqueID: 653746717
+    locked: 0
+  - name: bg5
+    uniqueID: 844127101
+    locked: 0
   - name: Terrain
     uniqueID: 37670295
-    locked: 0
-  - name: New Layer 3
-    uniqueID: 2617455717
     locked: 0
