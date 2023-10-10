@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayersMovement : MonoBehaviour
 {
     // init some types 
+    private enum MovementState { idle, running, jumping, falling}    
 
     private Rigidbody2D rb;
     private BoxCollider2D bc;
@@ -13,9 +14,6 @@ public class PlayersMovement : MonoBehaviour
     private float dirX;
     [SerializeField]private float moveSpeed = 7f;
     [SerializeField] private float jumpForce = 5f;
-
-    private enum MovementState { idle, running, jumping, falling}    
-
     [SerializeField] private LayerMask jumpableGround;
 
     // Start is called before the first frame update
@@ -39,7 +37,7 @@ public class PlayersMovement : MonoBehaviour
         rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
 
    
-        // jump if clicked on the space key le jeu est en 2d (en  dur )
+        // jump 
 
         if(Input.GetButtonDown("Jump") && IsGrounded())
         {

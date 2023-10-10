@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
+
+    public string nextLevelName;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +25,9 @@ public class Finish : MonoBehaviour
 
     private void CompleteLevel()
     {
-        Debug.Log("Level complete");
+        Debug.Log("Level Completed");
+
+        SceneManager.LoadScene(nextLevelName);
     }
 
 }

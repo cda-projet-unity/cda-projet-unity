@@ -24,6 +24,7 @@ public class WaypointFollower : MonoBehaviour
         if (Vector2.Distance(transform.position, currentWaypoint.transform.position) < 0.1f)
         {
             waypointIndex++;
+            
             if (waypointIndex >= waypoints.Length)
             {
                 waypointIndex = 0;
