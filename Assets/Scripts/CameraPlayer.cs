@@ -5,25 +5,30 @@ using UnityEngine;
 public class CameraPlayer : MonoBehaviour
 {
     [SerializeField] private Transform player;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float z;
+    [SerializeField] private float width;
+    [SerializeField] private float height;
+    private Camera cam;
+    private Vector3 leftLimit;
+    private Vector3 rightLimit;
+    private bool isMoving;
+
+    private void Start()
     {
-        
+        cam = Camera.main;
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        // make the camera follow the player
+        Vector3 screenPos = cam.WorldToScreenPoint(player.position);
+        leftLimit = cam.ViewportToScreenPoint(new Vector3(width, height, z));
+        rightLimit = cam.ViewportToScreenPoint(new Vector3(1 - width, 1 - height, z));
 
-        // get the player position
+        if (screenPos.x != (rightLimit.x - leftLimit.x) / 2)
+        {
 
-        Vector3 playerPosition = GameObject.Find("Player").transform.position;
-
-        // set the camera position to the player position
-
-        transform.position = new Vector3(playerPosition.x, playerPosition.y+4, -10);
-
-
+            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, z), Time.deltaTime);
+            Debug.Log("moving cam");
+        }
     }
 }
+

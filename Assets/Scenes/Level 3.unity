@@ -548,7 +548,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d951050dc2560cf44bbde12c8901004a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 722983318}
+  z: -10
+  width: 0.1
+  height: 0.3
 --- !u!1001 &532988363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -858,7 +861,7 @@ GameObject:
   - component: {fileID: 722983323}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -951,7 +954,7 @@ Transform:
   m_GameObject: {fileID: 722983315}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.12, y: 0.96, z: 0}
+  m_LocalPosition: {x: 64.62, y: 2.55, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7646,6 +7649,7 @@ GameObject:
   - component: {fileID: 1630407296}
   - component: {fileID: 1630407295}
   - component: {fileID: 1630407294}
+  - component: {fileID: 1630407298}
   m_Layer: 0
   m_Name: EndFlag
   m_TagString: Untagged
@@ -7786,6 +7790,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1630407298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630407293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1154b4708445a8d4e81d9c75e04ddefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextLevelName: Level 2
 --- !u!4 &1642963246 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1335375253797715382, guid: e366bb18aa6508f4f9d1c266d93a80b4, type: 3}
