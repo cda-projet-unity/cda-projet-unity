@@ -6,13 +6,13 @@ using UnityEngine;
 public class EnemyAggro : MonoBehaviour
 {
 
-    private Animator animator;
+    private Animator anim;
     private bool playerInSight = false;
 
 
     private void Start()
     {
-        animator = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
 
     }
 
@@ -20,47 +20,49 @@ public class EnemyAggro : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-         playerInSight = true;
-         PlayerInSight();
-
+            playerInSight = true;
+            PlayerInSight();
         }
-
     }
+    
 
-  private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            playerInSight = false;
-            PlayerOutOfSight();
-        }
+          if (collision.CompareTag("Player"))
+          {
+              playerInSight = false;
+          }
     }
+
 
     private void PlayerInSight()
     {
-        Debug.Log("Player in sight");
-        Invoke("attack", 1f);
+        StartCoroutine(AttackPlayer());
     }
 
-    private void attack ()
+    private IEnumerator AttackPlayer()
     {
-        animator.SetTrigger("PlayerInSight");
-        Debug.Log("Attack");
-        animator.SetTrigger("WaitOnSpike");
-        Invoke("DisableSpikes", 1f);
+        while (playerInSight)
+        { 
+            anim.SetTrigger("PlayerInSight");
+            gameObject.tag = "Traps";
+            anim.SetTrigger("WaitOnSpike");
+            yield return new WaitForSeconds(1f);
+            anim.SetTrigger("DisableSpikes");
+            gameObject.tag = "Untagged";
+            yield return new WaitForSeconds(2.5f);
+        }
     }
-
-    
 
     private void DisableSpikes()
     {
-        animator.SetTrigger("DisableSpikes");
+        anim.SetTrigger("DisableSpikes");
     }
 
     private void PlayerOutOfSight()
     {
-        Debug.Log("Player out of sight");
-        animator.SetTrigger("PlayerOutOfSight");
+        StopCoroutine(AttackPlayer());
+        anim.SetTrigger("PlayerOutOfSight");
     }
 
 }

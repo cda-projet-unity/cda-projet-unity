@@ -92,5 +92,7 @@ public class PlayersMovement : MonoBehaviour
             // here we create a boxcast to check if the player is grounded who has 
            return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
+
+
 }
  
