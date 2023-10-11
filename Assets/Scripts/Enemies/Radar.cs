@@ -6,7 +6,11 @@ public class Radar : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D trigger)
     {
-        if (trigger.CompareTag("Player")) Debug.Log("Couillon détecté .... Exterminate");
+        if (trigger.CompareTag("Player"))
+        {
+            Debug.Log("Couillon détecté .... Exterminate");
+            gameObject.GetComponentInParent<Lapinou>().CouillonSpotted();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D trigger)

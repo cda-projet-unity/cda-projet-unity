@@ -12,9 +12,10 @@ public class Lapinou : MonoBehaviour
 
     private void Update()
     {
+        Vector3 playerPosition = GameObject.Find("Player").transform.position;
         if (attacking)
         {
-            //transform.Translate(GameObject.Find("Player");
+            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerPosition.x, transform.position.y), Time.deltaTime);
         }
     }
 }
