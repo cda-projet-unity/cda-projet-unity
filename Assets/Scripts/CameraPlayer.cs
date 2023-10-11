@@ -23,11 +23,17 @@ public class CameraPlayer : MonoBehaviour
         leftLimit = cam.ViewportToScreenPoint(new Vector3(width, height, z));
         rightLimit = cam.ViewportToScreenPoint(new Vector3(1 - width, 1 - height, z));
 
-        if (screenPos.x != (rightLimit.x - leftLimit.x) / 2)
+        if (screenPos.x < leftLimit.x || screenPos.x > rightLimit.x || isMoving)
         {
-
-            transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, z), Time.deltaTime);
-            Debug.Log("moving cam");
+            isMoving = true;
+            if (Vector2.Distance(screenPos, cam.WorldToScreenPoint(transform.position)) <= 100f)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, z), Time.deltaTime);
+            }
         }
     }
 }
