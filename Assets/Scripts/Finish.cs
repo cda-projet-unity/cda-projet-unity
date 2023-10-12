@@ -16,7 +16,7 @@ public class Finish : MonoBehaviour
 
    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             Debug.Log("Player reached the finish line");
             CompleteLevel();
