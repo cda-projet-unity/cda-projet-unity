@@ -8,6 +8,7 @@ public class FruitLoot : MonoBehaviour
     private Transform player;
     private bool isLooting = false;
     private float t = 0.1f;
+    [SerializeField] private int scoreAmount = 10;
 
     private void Start()
     {
@@ -33,7 +34,8 @@ public class FruitLoot : MonoBehaviour
     IEnumerator Loot()
     {
         yield return new WaitForSeconds(.5f);
-        //TODO update le score
+        Debug.Log("updating");
+        PlayerStats.playerStats.UpdateScore(scoreAmount);
         Destroy(gameObject);
     }
 }

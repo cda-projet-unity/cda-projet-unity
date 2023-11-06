@@ -31,6 +31,7 @@ public class PlayerLife : MonoBehaviour
         // Destroy the player
         rb.bodyType = RigidbodyType2D.Static;
         anim.SetTrigger("TriggerDeath");
+        PlayerStats.playerStats.ResetScore();
     }
     private void Restart()
     {
