@@ -7,7 +7,7 @@ public class ScoreRegistration : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI scoreTextComponent;
 
-    void Awake()
+    private void Start()
     {
         PlayerStats.playerStats.RegisterScoreText(scoreTextComponent);
     }

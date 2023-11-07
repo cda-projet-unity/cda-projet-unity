@@ -26,11 +26,6 @@ public class PlayerStats : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        Debug.Log("hello start");
-    }
-
 
     public void UpdateScore(int addScore)
     {

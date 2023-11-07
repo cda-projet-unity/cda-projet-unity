@@ -1436,7 +1436,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'SCORE : '
+  m_text: 'Score : 0'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d5213298f0e58aa4da1c880c5c252d75, type: 2}
   m_sharedMaterial: {fileID: 4172474227418077685, guid: d5213298f0e58aa4da1c880c5c252d75, type: 2}
@@ -1445,8 +1445,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280717312
-  m_fontColor: {r: 0, g: 0.5660378, b: 0.14786834, a: 1}
+    rgba: 4278227967
+  m_fontColor: {r: 1, g: 0.57532537, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
