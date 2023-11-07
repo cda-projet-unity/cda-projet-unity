@@ -29,6 +29,7 @@ public class FruitLoot : MonoBehaviour
     {
         Debug.Log("lootin fruit");
         isLooting = true;
+        Debug.Log(PlayerStats.playerStats);
     }
 
     IEnumerator Loot()
