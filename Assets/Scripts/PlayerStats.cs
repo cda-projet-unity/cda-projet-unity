@@ -9,7 +9,7 @@ public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats playerStats;
 
-    [SerializeField] private TextMeshProUGUI scoreTextComponent;
+    private TextMeshProUGUI scoreTextComponent;
 
     private int score = 0;
 
@@ -50,5 +50,10 @@ public class PlayerStats : MonoBehaviour
     {
         Debug.Log("reseted");
         score = 0;
+    }
+
+    public void RegisterScoreText(TextMeshProUGUI scoreTextComp)
+    {
+        scoreTextComponent = scoreTextComp;
     }
 }
