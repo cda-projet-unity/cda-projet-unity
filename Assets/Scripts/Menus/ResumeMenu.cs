@@ -8,20 +8,37 @@ using TMPro;
 
 public class ResumeMenu : MonoBehaviour
 {
-    [SerializeField] GameObject buttonContainer;
-    [SerializeField] private TextMeshProUGUI bannerTitle;
+    [SerializeField] CanvasGroup cGroupLevel;
+    [SerializeField] CanvasGroup cGroupStats;
+    [SerializeField] Sprite btnSrc;
+    [SerializeField] Button[] buttons;
     private int maxLevel;
     private int levelChosen;
-    private Button[] levels;
+    private float alphaValue = 1.0f;
 
     void Start()
     {
         maxLevel = PlayerPrefs.GetInt("maxLevel", 1);
-        //int highScore = PlayerPrefs.GetInt("HighScore" + SceneManager.GetActiveScene().name, 0);        
+        string jsonScores = PlayerPrefs.GetString("HighScore", "");
+        string[] highScores = jsonScores.Split(",");
+        for (int i = 0; i < maxLevel; i++)
+        {
+            buttons[i].image.sprite = btnSrc;
+            buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
+            buttons[i].interactable = true;
+            ;
+        }
+    }
+
+    private void Update()
+    {
+        cGroupLevel.alpha = Mathf.Lerp(cGroupLevel.alpha, alphaValue, Time.deltaTime);
+        cGroupStats.alpha = Mathf.Lerp(cGroupStats.alpha, 1 - alphaValue, Time.deltaTime);
     }
 
     public void ChooseLevel(int level)
     {
+        alphaValue = 0f;
         Debug.Log(level);
         levelChosen = level;
     }

@@ -21,9 +21,5 @@ public class MenuPanel : MonoBehaviour
 
     private void UpdateLevel(int level)
     {
-        while (canvasGroup.alpha > 0)
-        {
-            canvasGroup.alpha -= changeValue;
-        }
     }
 }
