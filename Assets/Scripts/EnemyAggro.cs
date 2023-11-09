@@ -7,43 +7,19 @@ public class EnemyAggro : MonoBehaviour
 {
 
     private Animator anim;
-    public bool playerInSight = false;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-    }
-
-    
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            playerInSight = true;
-            PlayerInSight();
-        }
-    }
-    
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            playerInSight = false;
-            PlayerOutOfSight();
-        }
-    }
-
-    public void PlayerInSight()
-    {
-        Debug.Log("PlayerInSight");
-        playerInSight = true;
         StartCoroutine(AttackPlayer());
     }
 
+  
+ 
+
     private IEnumerator AttackPlayer()
     {
-        while (playerInSight)
+        while (true)
         { 
             anim.SetTrigger("PlayerInSight");
             gameObject.tag = "Traps";
@@ -52,6 +28,7 @@ public class EnemyAggro : MonoBehaviour
             anim.SetTrigger("DisableSpikes");
             gameObject.tag = "Untagged";
             yield return new WaitForSeconds(2.5f);
+            StopCoroutine(AttackPlayer());
         }
         
     }
@@ -61,11 +38,7 @@ public class EnemyAggro : MonoBehaviour
         anim.SetTrigger("DisableSpikes");
     }
 
-    public void PlayerOutOfSight()
-    {
-        playerInSight = false;
-        StopCoroutine(AttackPlayer());
-        anim.SetTrigger("PlayerOutOfSight");
-    }
+   
+       
 
 }
