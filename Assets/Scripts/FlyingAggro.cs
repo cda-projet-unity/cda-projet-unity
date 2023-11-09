@@ -9,6 +9,7 @@ public class FlyingAggro : MonoBehaviour
     private Rigidbody2D rb;
     private bool playerInSight = false;
     private Vector3 initialPosition;
+    [SerializeField] private float speed = 0.5f;
 
     void Start()
     {
@@ -26,7 +27,6 @@ public class FlyingAggro : MonoBehaviour
             playerInSight = true;
             PlayerInSight();
             StartCoroutine(MoveTowardsPlayer());
-
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
@@ -57,7 +57,7 @@ public class FlyingAggro : MonoBehaviour
             }
 
             Vector3 playerPosition = player.transform.position;
-            transform.position = Vector2.MoveTowards(transform.position, playerPosition, 0.05f);
+            transform.position = Vector2.MoveTowards(transform.position, playerPosition, speed);
             yield return new WaitForSeconds(0.01f);
         }
     }
