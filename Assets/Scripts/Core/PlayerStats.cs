@@ -38,6 +38,7 @@ public class PlayerStats : MonoBehaviour
             scoreTextComponent = gameObject.AddComponent<TextMeshProUGUI>();
         }
         scoreTextComponent.text = "Score : " + score.ToString();
+        Debug.Log("updated");
 
     }
 

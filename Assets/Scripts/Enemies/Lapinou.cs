@@ -2,9 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lapinou : MonoBehaviour
-{ {
-    [SerializeField] float speed = 2f;
+public class Lapinou : Enemy
+{
 
     Vector2 startPos;
     bool lookRight = true;
@@ -18,8 +17,7 @@ public class Lapinou : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector3.right * Time.deltaTime * speed);
-
+        transform.Translate(Vector2.right * Time.deltaTime * speed);
         if (Vector2.Distance(startPos, transform.position) <= .5f && !lookRight) FlipCharacter();
     }
 
@@ -27,24 +25,12 @@ public class Lapinou : MonoBehaviour
     {
         if (collision.CompareTag("PointRetour"))
         {
+            Debug.Log("coucou");
             FlipCharacter();
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        GameObject contact = collision.gameObject;
-        if (contact.CompareTag("Player") && contact.GetComponent<KnightScript>().OnAttack)
-        {
-            AudioSource audioSource = GetComponent<AudioSource>();
-            audioSource.PlayOneShot(deathSound);
-            Death();
-        }
-        else if (contact.CompareTag("Player"))
-        {
-            DealDamage(contact);
-        }
-    }
+
 
     void FlipCharacter()
     {
@@ -53,4 +39,4 @@ public class Lapinou : MonoBehaviour
         lookRight = !lookRight;
     }
 }
-}
+
