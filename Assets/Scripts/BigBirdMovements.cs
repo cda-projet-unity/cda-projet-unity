@@ -13,13 +13,16 @@ public class BigBirdMovements : MonoBehaviour
     private bool movingDown = true;
     private float waitTime = 2f;
     private float waitTimer = 0f;
+    private BoxCollider2D bc;
+    [SerializeField] private LayerMask jumpableGround;
 
     private void Start()
     {
         initialPosition = transform.position;
         maxHeight = initialPosition.y + 3f;
         animator = GetComponent<Animator>();
-
+        bc = GetComponent<BoxCollider2D>();
+        jumpableGround = LayerMask.GetMask("Ground");
     }
 
     private void Update()
@@ -51,7 +54,7 @@ public class BigBirdMovements : MonoBehaviour
             transform.Translate(Vector3.down * speed * Time.deltaTime);
             OnFalling();
 
-            if (transform.position.y <= 0f)
+            if (IsGrounded())
             {
                 movingDown = false;
                 OnGrounded();
@@ -79,6 +82,11 @@ public class BigBirdMovements : MonoBehaviour
             movingDown = true;
         }
 
+    }
+
+    private bool IsGrounded(){
+        // check if the poulet is grounded
+       return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
      // Appelé lorsque le joueur touche le sol
     public void OnGrounded()
