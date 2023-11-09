@@ -27,6 +27,7 @@ public class PlayersMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
        anim = GetComponent<Animator>();
        jumpableGround = LayerMask.GetMask("Ground");
+       
     }
 
     // Update is called once per frame
