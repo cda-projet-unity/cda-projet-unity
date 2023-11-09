@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1529550450893088246}
   - component: {fileID: 1660093132861188303}
   - component: {fileID: 7155868196958151548}
-  - component: {fileID: 7695409760663194657}
   - component: {fileID: 6106154642906025443}
   - component: {fileID: 8379724916973870982}
   - component: {fileID: 3526118432857006819}
@@ -81,7 +80,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 37670295
   m_SortingLayer: 6
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -6367560908665664636, guid: cd947491a13509945aa1b644f9db3ef2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -204,20 +203,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7695409760663194657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1419528107326945656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3d099779d729847a422e9472a821e9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cherrySoundEffect: {fileID: 5730503871992060383}
-  CherryText: {fileID: 0}
 --- !u!114 &6106154642906025443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +420,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 653b5f82883b40d4193bae8ce08b6793, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.396
   m_Pitch: 1
   Loop: 0
   Mute: 0

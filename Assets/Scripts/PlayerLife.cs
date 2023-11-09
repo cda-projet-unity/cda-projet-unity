@@ -44,6 +44,7 @@ public class PlayerLife : MonoBehaviour
     private void Die()
     {
         // Destroy the player
+        PlayerStats.playerStats.ResetScore();
         uiManager.GameOver();
     }
 
