@@ -2,20 +2,41 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Lapinou : MonoBehaviour
+public class Lapinou : Enemy
 {
-    private bool attacking = false;
-    public void CouillonSpotted()
+
+    Vector2 startPos;
+    bool lookRight = true;
+    SpriteRenderer sp;
+
+    void Start()
     {
-        attacking = true;
+        startPos = transform.position;
+        sp = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    void Update()
     {
-        Vector3 playerPosition = GameObject.Find("Player").transform.position;
-        if (attacking)
+        transform.Translate(Vector2.right * Time.deltaTime * speed);
+        if (Vector2.Distance(startPos, transform.position) <= .5f && !lookRight) FlipCharacter();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("PointRetour"))
         {
-            transform.position = Vector2.MoveTowards(transform.position, new Vector2(playerPosition.x, transform.position.y), Time.deltaTime);
+            Debug.Log("coucou");
+            FlipCharacter();
         }
     }
+
+
+
+    void FlipCharacter()
+    {
+        sp.flipX = !sp.flipX;
+        speed = -speed;
+        lookRight = !lookRight;
+    }
 }
+
