@@ -23,7 +23,7 @@ public class ResumeMenu : MonoBehaviour
     {
         maxLevel = PlayerPrefs.GetInt("maxLevel", 1);
         for (int i = 0; i < maxLevel; i++)
-        {d
+        {
             buttons[i].image.sprite = btnSrc;
             buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
             buttons[i].interactable = true;
