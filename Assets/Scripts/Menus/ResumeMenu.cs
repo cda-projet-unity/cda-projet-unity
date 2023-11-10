@@ -17,13 +17,13 @@ public class ResumeMenu : MonoBehaviour
     private int maxLevel;
     private float alphaValue = 1.0f;
     private int highScore;
+    private int chosenLevel = 1;
 
     void Start()
-    {   
+    {
         maxLevel = PlayerPrefs.GetInt("maxLevel", 1);
         for (int i = 0; i < maxLevel; i++)
-        {
-            PlayerPrefs.DeleteAll();
+        {d
             buttons[i].image.sprite = btnSrc;
             buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
             buttons[i].interactable = true;
@@ -33,27 +33,28 @@ public class ResumeMenu : MonoBehaviour
 
     private void Update()
     {
-        cGroupLevel.alpha = Mathf.Lerp(cGroupLevel.alpha, alphaValue,2f * Time.deltaTime);
+        cGroupLevel.alpha = Mathf.Lerp(cGroupLevel.alpha, alphaValue, 2f * Time.deltaTime);
         cGroupStats.alpha = Mathf.Lerp(cGroupStats.alpha, 1 - alphaValue, 2f * Time.deltaTime);
     }
 
     public void ChooseLevel(int level)
     {
         Debug.Log(level);
+        chosenLevel = level;
         DisplayStats(level);
     }
 
     private void DisplayStats(int level)
     {
-        alphaValue = 0f;
         highScore = PlayerPrefs.GetInt("level" + level.ToString() + "_highscore", 0);
         title.text = "Niveau " + level.ToString();
         stats.text = "Meilleur score : " + highScore.ToString();
+        alphaValue = 0f;
     }
 
-    public void Play()
+    public void LaunchGame()
     {
         Debug.Log("Ignition ...");
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(chosenLevel);
     }
 }

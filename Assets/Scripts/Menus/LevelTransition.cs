@@ -43,6 +43,7 @@ public class LevelTransition : MonoBehaviour
         if (scoreValue >= highScoreValue)
         {
             PlayerPrefs.SetInt("level" + level + "_highscore", scoreValue);
+            PlayerPrefs.Save();
         }
     }
 
@@ -53,6 +54,7 @@ public class LevelTransition : MonoBehaviour
         PlayerPrefs.SetInt("maxLevel", scene);
         if (scene  < SceneManager.sceneCountInBuildSettings - 1) {
             PlayerPrefs.SetInt("maxLevel", scene);
+            PlayerPrefs.Save();
             SceneManager.LoadScene(scene + 1);
         } else if (scene >= SceneManager.sceneCountInBuildSettings -1)
         {
