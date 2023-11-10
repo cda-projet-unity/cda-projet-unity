@@ -12,17 +12,18 @@ public class ResumeMenu : MonoBehaviour
     [SerializeField] CanvasGroup cGroupStats;
     [SerializeField] Sprite btnSrc;
     [SerializeField] Button[] buttons;
+    [SerializeField] TextMeshProUGUI title;
+    [SerializeField] TextMeshProUGUI stats;
     private int maxLevel;
-    private int levelChosen;
     private float alphaValue = 1.0f;
+    private int highScore;
 
     void Start()
-    {
+    {   
         maxLevel = PlayerPrefs.GetInt("maxLevel", 1);
-        string jsonScores = PlayerPrefs.GetString("HighScore", "");
-        string[] highScores = jsonScores.Split(",");
         for (int i = 0; i < maxLevel; i++)
         {
+            PlayerPrefs.DeleteAll();
             buttons[i].image.sprite = btnSrc;
             buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
             buttons[i].interactable = true;
@@ -38,8 +39,15 @@ public class ResumeMenu : MonoBehaviour
 
     public void ChooseLevel(int level)
     {
-        alphaValue = 0f;
         Debug.Log(level);
-        levelChosen = level;
+        DisplayStats(level);
+    }
+
+    private void DisplayStats(int level)
+    {
+        alphaValue = 0f;
+        highScore = PlayerPrefs.GetInt("level" + level.ToString() + "_highscore", 0);
+        title.text = "Niveau " + level.ToString();
+        stats.text = "Meilleur score : " + highScore.ToString();
     }
 }
