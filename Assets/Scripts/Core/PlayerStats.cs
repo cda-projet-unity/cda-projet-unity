@@ -8,10 +8,9 @@ using Unity.VisualScripting;
 public class PlayerStats : MonoBehaviour
 {
     public static PlayerStats playerStats;
-
     private TextMeshProUGUI scoreTextComponent;
-
     private int score = 0;
+    private int level = 0;
 
     private void Awake()
     {
@@ -42,6 +41,16 @@ public class PlayerStats : MonoBehaviour
 
     }
 
+    public int GetScore()
+    {
+        return score;
+    }
+
+    public int GetScene()
+    {
+        return level;
+    }
+
     public void ResetScore()
     {
         Debug.Log("reseted");
@@ -51,5 +60,10 @@ public class PlayerStats : MonoBehaviour
     public void RegisterScoreText(TextMeshProUGUI scoreTextComp)
     {
         scoreTextComponent = scoreTextComp;
+    }
+
+    public void SetScene(int scene)
+    {
+        level = scene;
     }
 }

@@ -1,20 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Finish : MonoBehaviour
 {
+    [SerializeField] CanvasGroup cGroup;
+    private int level;
+    
 
-    public string nextLevelName;
-
-    // Start is called before the first frame update
     void Start()
     {
-        
+        level = PlayerStats.playerStats.GetScene();
     }
 
-   private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -26,8 +25,7 @@ public class Finish : MonoBehaviour
     private void CompleteLevel()
     {
         Debug.Log("Level Completed");
-
-        SceneManager.LoadScene(nextLevelName);
+        cGroup.GetComponent<LevelTransition>().SetAlphaValue(1);
     }
 
 }
