@@ -76,8 +76,6 @@ public class Lapinou : Enemy
 
     IEnumerator DeathSequence()
     {
-        // debug log
-        Debug.Log("Lapinou is dead");
         anim.SetBool("isRunning", false);
         anim.SetTrigger("isDying");
         yield return new WaitForSeconds(0.1f);
