@@ -50,4 +50,10 @@ public class ResumeMenu : MonoBehaviour
         title.text = "Niveau " + level.ToString();
         stats.text = "Meilleur score : " + highScore.ToString();
     }
+
+    public void Play()
+    {
+        Debug.Log("Ignition ...");
+        SceneManager.LoadScene(1);
+    }
 }
