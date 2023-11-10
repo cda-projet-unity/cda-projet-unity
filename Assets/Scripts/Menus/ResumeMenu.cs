@@ -32,8 +32,8 @@ public class ResumeMenu : MonoBehaviour
 
     private void Update()
     {
-        cGroupLevel.alpha = Mathf.Lerp(cGroupLevel.alpha, alphaValue, Time.deltaTime);
-        cGroupStats.alpha = Mathf.Lerp(cGroupStats.alpha, 1 - alphaValue, Time.deltaTime);
+        cGroupLevel.alpha = Mathf.Lerp(cGroupLevel.alpha, alphaValue,2f * Time.deltaTime);
+        cGroupStats.alpha = Mathf.Lerp(cGroupStats.alpha, 1 - alphaValue, 2f * Time.deltaTime);
     }
 
     public void ChooseLevel(int level)
