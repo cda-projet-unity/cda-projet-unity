@@ -16,6 +16,8 @@ public class PlayersMovement : MonoBehaviour
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private LayerMask jumpableGround;
 
+    [SerializeField] private AudioSource jumpSoundEffect;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -25,26 +27,25 @@ public class PlayersMovement : MonoBehaviour
         sr = GetComponent<SpriteRenderer>();
        anim = GetComponent<Animator>();
        jumpableGround = LayerMask.GetMask("Ground");
+       
     }
 
     // Update is called once per frame
     private void Update()
     {
-
         // make the player move
         dirX = Input.GetAxisRaw("Horizontal");
-
-        rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
-
-   
+        // Ensure the Rigidbody2D is not static
+        if (rb.bodyType != RigidbodyType2D.Static)
+        {
+            rb.velocity = new Vector2(dirX * moveSpeed, rb.velocity.y);
+        }
         // jump 
-
         if(Input.GetButtonDown("Jump") && IsGrounded())
         {
+            jumpSoundEffect.Play();
             rb.velocity = new Vector2( rb.velocity.x, jumpForce);      
-        
         }
-
         UpdateAnimation();
     }
 
@@ -89,7 +90,7 @@ public class PlayersMovement : MonoBehaviour
     // return true if the player is grounded
     private bool IsGrounded(){
             // check if the player is grounded
-            // here we create a boxcast to check if the player is grounded who has 
+            // here we create a boxcast to check if the player is grounded 
            return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 

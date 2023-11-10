@@ -8,30 +8,47 @@ public class PlayerLife : MonoBehaviour
     
     private Animator anim;
     private Rigidbody2D rb;
+    private UIManager uiManager;
+    [SerializeField] private AudioSource hitSoundEffect;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        uiManager = FindObjectOfType<UIManager>();
     }
 
-    // OnCollisionEnter2D is called when this collider/rigidbody has begun touching another rigidbody/collider
+    private void OnCollisionStay2D(Collision2D collision) {
+        if(collision.gameObject.CompareTag("Traps"))
+        {
+            hitSoundEffect.Play();
+            rb.bodyType = RigidbodyType2D.Static;
+            anim.SetTrigger("TriggerDeath");
+            Debug.Log("Player hit an enemy");
+            Invoke("Die", 0.7f);
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Traps"))
         {   
+            hitSoundEffect.Play();
+            rb.bodyType = RigidbodyType2D.Static;
+            anim.SetTrigger("TriggerDeath");
             Debug.Log("Player hit a trap");
-            Die();
+            Invoke("Die", 0.7f);
         }
     }
 
     private void Die()
     {
         // Destroy the player
-        rb.bodyType = RigidbodyType2D.Static;
-        anim.SetTrigger("TriggerDeath");
+        PlayerStats.playerStats.ResetScore();
+        uiManager.GameOver();
     }
+
+    // Restart is triggered by an event on animation ending  
     private void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
