@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7616472312022755555}
   m_Layer: 0
   m_Name: Lapinou
-  m_TagString: Untagged
+  m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -203,6 +203,7 @@ MonoBehaviour:
   aggroRange: 0
   speed: 2
   scoreAmount: 30
+  scoreUpdated: 0
 --- !u!61 &4624921334366371328
 BoxCollider2D:
   m_ObjectHideFlags: 0

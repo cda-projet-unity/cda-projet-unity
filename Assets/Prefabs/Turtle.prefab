@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 6811537403517222411}
   m_Layer: 6
   m_Name: Turtle
-  m_TagString: Untagged
+  m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -166,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271e29b1b1de21e479d07fe741ded173, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInSight: 0
 --- !u!50 &6811537403517222411
 Rigidbody2D:
   serializedVersion: 4

@@ -31,6 +31,11 @@ public class LevelTransition : MonoBehaviour
     {
         alphaValue = alpha;
         DisplayStats();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     private void DisplayStats()

@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerLife : MonoBehaviour
 {
-    
+
     private Animator anim;
     private Rigidbody2D rb;
     private UIManager uiManager;
@@ -18,8 +18,9 @@ public class PlayerLife : MonoBehaviour
         uiManager = FindObjectOfType<UIManager>();
     }
 
-    private void OnCollisionStay2D(Collision2D collision) {
-        if(collision.gameObject.CompareTag("Traps"))
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Traps"))
         {
             hitSoundEffect.Play();
             rb.bodyType = RigidbodyType2D.Static;
@@ -32,12 +33,17 @@ public class PlayerLife : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Traps"))
-        {   
+        {
             hitSoundEffect.Play();
             rb.bodyType = RigidbodyType2D.Static;
             anim.SetTrigger("TriggerDeath");
             Debug.Log("Player hit a trap");
             Invoke("Die", 0.7f);
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
         }
     }
 
