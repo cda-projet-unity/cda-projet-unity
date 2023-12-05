@@ -5,6 +5,7 @@ using UnityEngine;
 public class Finish : MonoBehaviour
 {
     [SerializeField] CanvasGroup cGroup;
+    [SerializeField] GameObject canvasTransition;
     private int level;
     
 
@@ -25,6 +26,7 @@ public class Finish : MonoBehaviour
     private void CompleteLevel()
     {
         Debug.Log("Level Completed");
+        canvasTransition.SetActive(true);
         cGroup.GetComponent<LevelTransition>().SetAlphaValue(1);
     }
 
