@@ -114,5 +114,24 @@ public class PlayersMovement : MonoBehaviour
         return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Traps"))
+        {
+            //hitSoundEffect.Play();
+            //rb.bodyType = RigidbodyType2D.Static;
+            rb.velocity = new Vector2(0, 0);
+            moveSpeed = 0;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            anim.SetTrigger("TriggerDeath");
+            Debug.Log("Player hit a trap");
+            Invoke("Die", 0.7f);
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
+        }
+    }
 
 }

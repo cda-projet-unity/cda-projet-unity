@@ -217,6 +217,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78519f8d93f3d3b4182648265c43fc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 170511859203147328}
   canvasTransition: {fileID: 0}
   hitSoundEffect: {fileID: 3526118432857006819}
 --- !u!82 &8379724916973870982
