@@ -12180,6 +12180,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CanvasTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 8609316606945600583, guid: 7d032c7ff0477eb49acfb673254255bf, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
