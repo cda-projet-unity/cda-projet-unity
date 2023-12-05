@@ -62,7 +62,10 @@ public class PlayersMovement : MonoBehaviour
 
     public void OnJumpTap()
     {
-        rb.velocity = (new Vector2(rb.velocity.x, jumpForce));
+        if (IsGrounded())
+        {
+            rb.velocity = (new Vector2(rb.velocity.x, jumpForce));
+        }
     }
 
     private void UpdateAnimation(Vector2 movementDirection)
