@@ -9,6 +9,7 @@ public class PlayerLife : MonoBehaviour
     private Animator anim;
     private Rigidbody2D rb;
     private UIManager uiManager;
+    [SerializeField] private GameObject canvasTransition;
     [SerializeField] private AudioSource hitSoundEffect;
 
     private void Start()
@@ -27,6 +28,7 @@ public class PlayerLife : MonoBehaviour
             anim.SetTrigger("TriggerDeath");
             Debug.Log("Player hit an enemy");
             Invoke("Die", 0.7f);
+            canvasTransition.SetActive(true);
         }
     }
 

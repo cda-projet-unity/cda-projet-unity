@@ -29,16 +29,12 @@ public class EnemyAggro : MonoBehaviour
             gameObject.tag = "Untagged";
             yield return new WaitForSeconds(2.5f);
             StopCoroutine(AttackPlayer());
-        }
-        
+        }        
     }
 
     private void DisableSpikes()
     {
         anim.SetTrigger("DisableSpikes");
-    }
-
-   
-       
+    }  
 
 }
