@@ -7,7 +7,7 @@ public class PlayerLife : MonoBehaviour
 {
 
     private Animator anim;
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
     private UIManager uiManager;
     [SerializeField] private GameObject canvasTransition;
     [SerializeField] private AudioSource hitSoundEffect;
@@ -15,7 +15,7 @@ public class PlayerLife : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
+        //rb = GetComponent<Rigidbody2D>();
         uiManager = FindObjectOfType<UIManager>();
     }
 
@@ -32,22 +32,7 @@ public class PlayerLife : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Traps"))
-        {
-            hitSoundEffect.Play();
-            rb.bodyType = RigidbodyType2D.Static;
-            anim.SetTrigger("TriggerDeath");
-            Debug.Log("Player hit a trap");
-            Invoke("Die", 0.7f);
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
-            foreach (GameObject enemy in enemies)
-            {
-                Destroy(enemy);
-            }
-        }
-    }
+
 
     private void Die()
     {
