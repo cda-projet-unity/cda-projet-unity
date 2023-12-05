@@ -18,6 +18,8 @@ public class LevelTransition : MonoBehaviour
 
     void Start()
     {
+        gameObject.SetActive(false);
+        level = 0;          
         level = SceneManager.GetActiveScene().buildIndex;
         title.text = "Niveau " + level.ToString();
     }
@@ -29,6 +31,7 @@ public class LevelTransition : MonoBehaviour
 
     public void SetAlphaValue(int alpha)
     {
+        gameObject.SetActive(true);
         alphaValue = alpha;
         DisplayStats();
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
