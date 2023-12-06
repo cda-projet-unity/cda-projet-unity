@@ -7,16 +7,13 @@ public class PlayerLife : MonoBehaviour
 {
 
     private Animator anim;
-    private Rigidbody2D rb;
     private UIManager uiManager;
-    [SerializeField] private GameObject canvasTransition;
     [SerializeField] private AudioSource hitSoundEffect;
     private PlayersMovement pm;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        rb = GetComponent<Rigidbody2D>();
         uiManager = FindObjectOfType<UIManager>();
         pm = FindObjectOfType<PlayersMovement>();
     }
@@ -33,9 +30,7 @@ public class PlayerLife : MonoBehaviour
                 Destroy(enemy);
             }
             anim.SetTrigger("TriggerDeath");
-            Debug.Log("Player hit an enemy");
             Invoke("Die", 0.7f);
-            canvasTransition.SetActive(true);
         }
     }
 
