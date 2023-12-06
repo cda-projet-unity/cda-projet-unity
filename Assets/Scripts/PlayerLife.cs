@@ -7,16 +7,18 @@ public class PlayerLife : MonoBehaviour
 {
 
     private Animator anim;
-    [SerializeField] private Rigidbody2D rb;
+    private Rigidbody2D rb;
     private UIManager uiManager;
     [SerializeField] private GameObject canvasTransition;
     [SerializeField] private AudioSource hitSoundEffect;
+    private PlayersMovement pm;
 
     private void Start()
     {
         anim = GetComponent<Animator>();
-        //rb = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         uiManager = FindObjectOfType<UIManager>();
+        pm = FindObjectOfType<PlayersMovement>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -24,7 +26,12 @@ public class PlayerLife : MonoBehaviour
         if (collision.gameObject.CompareTag("Traps"))
         {
             hitSoundEffect.Play();
-            rb.bodyType = RigidbodyType2D.Static;
+            pm.FreezeCrampo();
+            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
+            foreach (GameObject enemy in enemies)
+            {
+                Destroy(enemy);
+            }
             anim.SetTrigger("TriggerDeath");
             Debug.Log("Player hit an enemy");
             Invoke("Die", 0.7f);
@@ -33,6 +40,7 @@ public class PlayerLife : MonoBehaviour
     }
 
 
+   
 
     private void Die()
     {

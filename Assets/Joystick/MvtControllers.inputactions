@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "Move",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "24856c7e-bec4-43c1-8e4b-bce901722e3f",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -49,7 +49,7 @@
                 },
                 {
                     "name": "",
-                    "id": "fb822dbb-de42-45d0-aa8d-ab850d79b6ce",
+                    "id": "4ba1a783-a1ed-4f13-808d-609e28097a28",
                     "path": "<Keyboard>/anyKey",
                     "interactions": "",
                     "processors": "",

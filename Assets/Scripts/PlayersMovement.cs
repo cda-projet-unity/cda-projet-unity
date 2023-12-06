@@ -13,9 +13,10 @@ public class PlayersMovement : MonoBehaviour
     private SpriteRenderer sr;
     private Animator anim;
     private float dirX;
-    [SerializeField] private float moveSpeed = 7f;
+    [SerializeField] private float speed = 7f;
     [SerializeField] private float jumpForce = 5f;
     [SerializeField] private LayerMask jumpableGround;
+    private float moveSpeed;
 
     [SerializeField] private AudioSource jumpSoundEffect;
 
@@ -25,7 +26,7 @@ public class PlayersMovement : MonoBehaviour
     // Start is called before the first frame update
     private void Start()
     {
-
+        moveSpeed = speed;
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         sr = GetComponent<SpriteRenderer>();
@@ -64,6 +65,7 @@ public class PlayersMovement : MonoBehaviour
     {
         if (IsGrounded())
         {
+            jumpSoundEffect.Play();
             rb.velocity = (new Vector2(rb.velocity.x, jumpForce));
         }
     }
@@ -105,6 +107,11 @@ public class PlayersMovement : MonoBehaviour
 
     }
 
+    public void FreezeCrampo()
+    {
+        moveSpeed = 0;
+    }
+
 
     // return true if the player is grounded
     private bool IsGrounded()
@@ -114,24 +121,8 @@ public class PlayersMovement : MonoBehaviour
         return Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, .1f, jumpableGround);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Traps"))
-        {
-            //hitSoundEffect.Play();
-            //rb.bodyType = RigidbodyType2D.Static;
-            rb.velocity = new Vector2(0, 0);
-            moveSpeed = 0;
-            rb.constraints = RigidbodyConstraints2D.FreezeAll;
-            anim.SetTrigger("TriggerDeath");
-            Debug.Log("Player hit a trap");
-            Invoke("Die", 0.7f);
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
-            foreach (GameObject enemy in enemies)
-            {
-                Destroy(enemy);
-            }
-        }
-    }
+
+
+
 
 }
