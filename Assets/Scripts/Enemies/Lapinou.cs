@@ -60,6 +60,7 @@ public class Lapinou : Enemy
             {
                 speed = 0;
                 Death();
+                collision.gameObject.GetComponent<Rigidbody2D>().AddForce(Vector2.up * 5000);
             }
         }
     }
