@@ -17,7 +17,7 @@ public class ResumeMenu : MonoBehaviour
     private int maxLevel;
     private float alphaValue = 1.0f;
     private int highScore;
-    private int chosenLevel = 1;
+    private int chosenLevel = 0;
 
     private void Start()
     {
@@ -27,7 +27,6 @@ public class ResumeMenu : MonoBehaviour
             buttons[i].image.sprite = btnSrc;
             buttons[i].GetComponentInChildren<TextMeshProUGUI>().text = (i + 1).ToString();
             buttons[i].interactable = true;
-            ;
         }
     }
 
