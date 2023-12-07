@@ -1,0 +1,65 @@
+{
+    "name": "MvtControllers",
+    "maps": [
+        {
+            "name": "Player",
+            "id": "39c4d3d9-ea2c-4b97-95b5-760557367405",
+            "actions": [
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "24856c7e-bec4-43c1-8e4b-bce901722e3f",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "JumpTap",
+                    "type": "Button",
+                    "id": "069e9a3c-e132-498c-a2fc-c1bed1b7b936",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f9ec6f7e-1b9b-4b55-9782-cf6cdb45f4f4",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "06c40191-6c91-4edb-9178-db4d6704e801",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ba1a783-a1ed-4f13-808d-609e28097a28",
+                    "path": "<Keyboard>/anyKey",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "JumpTap",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

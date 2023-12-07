@@ -35,6 +35,18 @@ public class CameraPlayer : MonoBehaviour
                 transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, z), Time.deltaTime);
             }
         }
+        if (screenPos.y < leftLimit.y || screenPos.y > rightLimit.y || isMoving)
+        {
+            isMoving = true;
+            if (Vector2.Distance(screenPos, cam.WorldToScreenPoint(transform.position)) <= 100f)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, new Vector3(player.position.x, player.position.y, z), Time.deltaTime);
+            }
+        }
     }
 }
 

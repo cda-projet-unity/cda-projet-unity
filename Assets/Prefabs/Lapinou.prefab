@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 7616472312022755555}
   m_Layer: 0
   m_Name: Lapinou
-  m_TagString: Untagged
+  m_TagString: Traps
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,6 +113,7 @@ GameObject:
   - component: {fileID: 8228221472158694887}
   - component: {fileID: 4624921334366371328}
   - component: {fileID: 6327698075415825735}
+  - component: {fileID: 4569410209140738645}
   m_Layer: 0
   m_Name: Body
   m_TagString: Untagged
@@ -178,7 +179,7 @@ SpriteRenderer:
   m_SortingOrder: 3
   m_Sprite: {fileID: 3450125647347128806, guid: 070a0fea8d7c56647b4a4a1bf7feb63e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.34, y: 0.44}
@@ -202,6 +203,7 @@ MonoBehaviour:
   aggroRange: 0
   speed: 2
   scoreAmount: 30
+  scoreUpdated: 0
 --- !u!61 &4624921334366371328
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -274,3 +276,24 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &4569410209140738645
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3255471523806319960}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5bac529652f0e6f4b9fc37d51e33ce7f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

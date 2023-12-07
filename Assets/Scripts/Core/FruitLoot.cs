@@ -19,7 +19,7 @@ public class FruitLoot : MonoBehaviour
     {
         if (isLooting)
         {
-            t += .1f;
+            t += .05f;
             transform.position = Vector2.Lerp(transform.position, player.position, t * Time.deltaTime);
             if (Vector2.Distance(player.position, transform.position) <= .2f) StartCoroutine(Loot());
         }

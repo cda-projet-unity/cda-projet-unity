@@ -15,11 +15,14 @@ public class LevelTransition : MonoBehaviour
     private int scoreValue = 0;
     private int highScoreValue = 0;
     private int level;
+    private PlayersMovement pm;
 
     void Start()
     {
+        level = 0;
         level = SceneManager.GetActiveScene().buildIndex;
-        title.text = "Niveau " + level.ToString();
+        title.text = "Niveau " + level.ToString(); 
+        pm = FindObjectOfType<PlayersMovement>();
     }
 
     void Update()
@@ -31,6 +34,12 @@ public class LevelTransition : MonoBehaviour
     {
         alphaValue = alpha;
         DisplayStats();
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Traps");
+        pm.FreezeCrampo();
+        foreach (GameObject enemy in enemies)
+        {
+            Destroy(enemy);
+        }
     }
 
     private void DisplayStats()
@@ -52,11 +61,13 @@ public class LevelTransition : MonoBehaviour
         Debug.Log(SceneManager.sceneCountInBuildSettings);
         int scene = SceneManager.GetActiveScene().buildIndex;
         PlayerPrefs.SetInt("maxLevel", scene);
-        if (scene  < SceneManager.sceneCountInBuildSettings - 1) {
+        if (scene < SceneManager.sceneCountInBuildSettings - 1)
+        {
             PlayerPrefs.SetInt("maxLevel", scene);
             PlayerPrefs.Save();
             SceneManager.LoadScene(scene + 1);
-        } else if (scene >= SceneManager.sceneCountInBuildSettings -1)
+        }
+        else if (scene >= SceneManager.sceneCountInBuildSettings - 1)
         {
             SceneManager.LoadScene(0);
         }
